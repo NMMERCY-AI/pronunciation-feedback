@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🗣️ Pronunciation Feedback</title>
+  <!-- Montserrat font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(
+        135deg,
+        #f2e6ee,
+        #ffccf2,
+        #977dff,
+        #0033ff,
+        #977dff,
+        #0033ff,
+        #0600af,
+        #0600ab
+      );
+      background-size: 1600% 1600%;
+      animation: gradientShift 30s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #222a44;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+    }
+
+    /* Gradient animation */
+    @keyframes gradientShift {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* Glass container */ 
+    .glass-container {
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        0 0 0 1px rgba(255, 255, 255, 0.18);
+      padding: 40px 30px;
+      max-width: 460px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease;
+    }
+    .glass-container:hover {
+      box-shadow:
+        0 12px 48px 0 rgba(31, 38, 135, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Heading */
+    h2 {
+      margin: 0 0 15px 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+      user-select: none;
+    }
+
+    p.intro {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1rem;
+      color: #333a5a;
+      user-select: none;
+    }
+
+    /* Form styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(34, 42, 68, 0.3);
+      font-size: 1rem;
+      color: #222a44;
+      background: rgba(255 255 255 / 0.85);
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+      resize: vertical;
+      font-family: 'Montserrat', sans-serif;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #977dff;
+      box-shadow: 0 0 8px 2px rgba(151, 125, 255, 0.5);
+      background: rgba(255 255 255 / 0.95);
+    }
+
+    textarea {
+      min-height: 90px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Submit button with gradient */
+    button[type="submit"] {
+      padding: 14px 0;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(45deg, #f2e6ee, #ffccf2, #977dff, #0033ff);
+      background-size: 300% 300%;
+      transition:
+        background-position 0.5s ease,
+        box-shadow 0.3s ease;
+      user-select: none;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 15px rgba(0, 51, 255, 0.3);
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-position: 100% 0;
+      box-shadow: 0 6px 20px rgba(0, 51, 255, 0.6);
+      outline: none;
+    }
+    button[type="submit"]:active {
+      transform: scale(0.98);
+      box-shadow: 0 4px 15px rgba(0, 51, 255, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 520px) {
+      .glass-container {
+        padding: 30px 20px;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="glass-container" role="main" aria-label="Pronunciation Feedback Form">
+    <h2>🗣️ Pronunciation Feedback</h2>
+    <p class="intro">Please share any word(s) you found hard or confusing.</p>
+    <form id="feedbackForm" novalidate>
+      <input
+        type="text"
+        name="word"
+        placeholder="Word (required)"
+        required
+        aria-required="true"
+        aria-label="Word you found difficult"
+      />
+      <textarea
+        name="comment"
+        placeholder="Comment (required)"
+        required
+        aria-required="true"
+        aria-label="Your comment about the word"
+      ></textarea>
+      <input
+        type="text"
+        name="name"
+        placeholder="Your name (optional)"
+        aria-label="Your name, optional"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email (optional)"
+        aria-label="Your email, optional"
+      />
+      <button type="submit" aria-label="Submit Feedback">Submit</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('feedbackForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const word = form.word.value.trim();
+      const comment = form.comment.value.trim();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+
+      if (!word || !comment) {
+        alert('Please fill in the required fields: Word and Comment.');
+        return;
+      }
+
+      const data = {
+        sheet1: {
+          word,
+          comment,
+          name,
+          email
+        }
+      };
+
+      try {
+        const response = await fetch('https://api.sheety.co/8b2e15794e22a80c1f4877276968f6a5/youtubeFeedback/sheet1', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server error: ${response.status}`);
+        }
+
+        alert('✅ Thank you for your feedback!');
+        form.reset();
+      } catch (error) {
+        alert('❌ Failed to send feedback. Please try again later.');
+        console.error('Error:', error);
+      }
+    });
+  </script>
+
+</body>
+</html>
