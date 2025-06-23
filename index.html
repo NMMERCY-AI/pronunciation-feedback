@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🗣️ Pronunciation Feedback</title>
+  <title>Pronunciation Feedback</title>
   <!-- Montserrat font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
   <style>
@@ -15,7 +15,7 @@
       margin: 0; padding: 0; height: 100%;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(
-        135deg,
+         10deg, 
         #f2e6ee,
         #ffccf2,
         #977dff,
@@ -25,7 +25,7 @@
         #0600af,
         #0600ab
       );
-      background-size: 1600% 1600%;
+      background-size: 300% 300%;
       animation: gradientShift 30s ease infinite;
       display: flex;
       justify-content: center;
@@ -38,13 +38,13 @@
     }
 
     /* Gradient animation */
-    @keyframes gradientShift {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
+   @keyframes gradientShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
 
-    /* Glass container */ 
+   /*  /* Glass container */ 
     .glass-container {
       background: rgba(255, 255, 255, 0.22);
       backdrop-filter: blur(12px);
@@ -58,13 +58,14 @@
       width: 100%;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease;
+      
     }
     .glass-container:hover {
       box-shadow:
         0 12px 48px 0 rgba(31, 38, 135, 0.5),
         0 0 0 1px rgba(255, 255, 255, 0.3);
     }
-
+ */
     /* Heading */
     h2 {
       margin: 0 0 15px 0;
@@ -72,6 +73,8 @@
       font-size: 1.8rem;
       text-align: center;
       user-select: none;
+     
+     
     }
 
     p.intro {
@@ -154,6 +157,7 @@
       }
       h2 {
         font-size: 1.5rem;
+        
       }
     }
   </style>
@@ -161,7 +165,7 @@
 <body>
 
   <main class="glass-container" role="main" aria-label="Pronunciation Feedback Form">
-    <h2>🗣️ Pronunciation Feedback</h2>
+    <h2>Pronunciation Feedback</h2>
     <p class="intro">Please share any word(s) you found hard or confusing.</p>
     <form id="feedbackForm" novalidate>
       <input
