@@ -210,8 +210,28 @@
       const name = form.name.value.trim();
       const email = form.email.value.trim();
 
+      // Validate required fields
       if (!word || !comment) {
         alert('Please fill in the required fields: Word and Comment.');
+        return;
+      }
+
+      // Word: only letters
+      if (!/^[a-zA-Z]+$/.test(word)) {
+        alert('The Word field should contain only letters (no numbers or special characters).');
+        return;
+      }
+
+      // Comment: allow letters, numbers, spaces, basic punctuation (.,!?'")
+      // Reject other special characters like @#$%^&* etc.
+      if (!/^[a-zA-Z0-9\s.,!?'"\-]+$/.test(comment)) {
+        alert('The Comment contains invalid characters. Allowed: letters, numbers, spaces, and basic punctuation (.,!?\').');
+        return;
+      }
+
+      // Email: if filled, basic email format validation
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address.');
         return;
       }
 
